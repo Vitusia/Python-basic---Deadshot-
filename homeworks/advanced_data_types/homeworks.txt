@@ -1,27 +1,44 @@
-1. Define the id of next variables:
+#1 Define the id of next variables:
 int_a = 55
 str_b = 'cursor'
 set_c = {1, 2, 3}
 lst_d = [1, 2, 3]
 dict_e = {'a': 1, 'b': 2, 'c': 3}
-2. Append 4 and 5 to the lst_d and define the id one more time.
-3. Define the type of each object from step 1.
-4*. Check the type of the objects by using isinstance.
+id_array = [int_a, str_b, set_c, lst_d, dict_e]
+for i in id_array:
+    print(f'ID for object "{i}" is {id(i)}')
+# 2. Append 4 and 5 to the lst_d and define the id one more time.
+lst_d.extend([4,5])
+print(f'ID for object "{lst_d}" is {id(lst_d)}')
+# 3. Define the type of each object from step 1.
+for i in id_array:
+    print(f'Object type of "{i}" is {type(i)}')
+# 4*. Check the type of the objects by using isinstance.
+for i in id_array:
+    insis_check = isinstance(i, type(i))
+    print(f'Insistance check if the onbject "{i}" is {type(i)}: {insis_check}')
 
-String formatting:
-Replace the placeholders with a value:
-"Anna has ___ apples and ___ peaches."
-
-5. With .format and curly braces {}
-6. By passing index numbers into the curly braces.
-7. By using keyword arguments into the curly braces.
-8*. With indicators of field size (5 chars for the first and 3 for the second)
-9. With f-strings and variables
-10. With % operator
-11*. With variable substitutions by name (hint: by using dict)
-
-Comprehensions:
-(1)
+# String formatting:
+# Replace the placeholders with a value:
+# 5. With .format and curly braces {}
+print("Anna has {} apples and {} peaches.".format(4, 5))
+# 6. By passing index numbers into the curly braces.
+print("Anna has {1} apples and {0} peaches.".format(4, 5) )
+# 7. By using keyword arguments into the curly braces.
+print("Anna has {apples_qunt} apples and {peaches_qunt} peaches.".format(apples_qunt= 2, peaches_qunt= 7))
+# 8*. With indicators of field size (5 chars for the first and 3 for the second)
+print("Anna has {0:5} apples and {1:3} peaches.".format(5000, 700))
+# 9. With f-strings and variables
+apples_q = "eleven"
+peaches_q = 12
+print(f"Anna has {apples_q} apples and {peaches_q} peaches.")
+# 10. With % operator
+print('Anna has %s apples and %s peaches.' % (46, 88))
+# 11*. With variable substitutions by name (hint: by using dict)
+print('Anna has %(a)s apples and %(b)s peaches.' % dict_e)
+# Comprehensions:
+# 12. Convert (1) to list comprehension
+# (1)
 lst = []
 for num in range(10):
     if num % 2 == 1:
@@ -29,21 +46,33 @@ for num in range(10):
     else:
         lst.append(num ** 4)
 print(lst)
+comp_1 = [num ** 2 if num % 2 == 1 else num ** 4 for num in range(10)]
+print(comp_1)
 
-(2)
+# 13. Convert (2) to regular for with if-else
+# (2)
 list_comprehension = [num // 2 if num % 2 == 0 else num * 10 for num in range(10)]
+print(list_comprehension)
+lst = []
+for num in range(10):
+    if num % 2 == 0:
+        lst.append(num // 2)
+    else:
+        lst.append(num *10)
+print(lst)
 
-12. Convert (1) to list comprehension
-13. Convert (2) to regular for with if-else
-
-(3)
+# 14. Convert (3) to dict comprehension.
+# (3)
 d = {}
 for num in range(1, 11):
     if num % 2 == 1:
         d[num] = num ** 2
 print(d)
+dict_comp = {num: num ** 2 for num in range(1, 11) if num % 2 == 1 }
+print(dict_comp)
 
-(4)
+# 15*. Convert (4) to dict comprehension.
+# (4)
 d = {}
 for num in range(1, 11):
     if num % 2 == 1:
@@ -51,43 +80,78 @@ for num in range(1, 11):
     else:
         d[num] = num // 0.5
 print(d)
+dict_comp_4 = {num: num ** 2 if num % 2 == 1 else num // 0.5 for num in range(1, 11)}
+print(dict_comp_4)
 
-(5)
+# 16. Convert (5) to regular for with if.
+# (5)
 dict_comprehension = {x: x**3 for x in range(10) if x**3 % 4 == 0}
+print(dict_comprehension)
 
-(6)
+d = {}
+for x in range(10):
+    if x ** 3 % 4 == 0:
+        d[x] = x ** 3
+print(d)
+
+# 17*. Convert (6) to regular for with if-else.
+    # (6)
 dict_comprehension = {x: x**3 if x**3 % 4 == 0 else x for x in range(10)}
-
-14. Convert (3) to dict comprehension.
-15*. Convert (4) to dict comprehension.
-16. Convert (5) to regular for with if.
-17*. Convert (6) to regular for with if-else.
-
-Lambda:
-
-(7)
-def foo(x, y):
-    if x < y:
-        return x
+d = {}
+for x in range(10):
+    if x**3 % 4 == 0:
+        d[x] = x ** 3
+    else:
+        d[x] = x
+print(dict_comprehension)
+print(d)
+# Lambda:
+# 18. Convert (7) to lambda function
+# (7)
+# def foo(x, y):
+#     if x < y:
+#         return x
+#     else:
+#         return y
+# print(foo(7,6))
+lam = lambda x,y: x if x < y else y
+print(lam(7,6))
+# 19*. Convert (8) to regular function
+# (8)
+# foo = lambda x, y, z: z if y < x and x > z else y
+# print(foo(7,0,5))
+def foo(x, y, z):
+    if y < x and x > z:
+        return z
     else:
         return y
-
-(8)
-foo = lambda x, y, z: z if y < x and x > z else y
-
-18. Convert (7) to lambda function
-19*. Convert (8) to regular function
-
+print(foo(7,0,5))
 lst_to_sort = [5, 18, 1, 24, 33, 15, 13, 55]
-
-20. Sort lst_to_sort from min to max
-21. Sort lst_to_sort from max to min
-22. Use map and lambda to update the lst_to_sort by multiply each element by 2
-23*. Raise each list number to the corresponding number on another list:
+# 20. Sort lst_to_sort from min to max
+print(sorted(lst_to_sort))
+# 21. Sort lst_to_sort from max to min
+print(sorted(lst_to_sort, reverse = True))
+# 22. Use map and lambda to update the lst_to_sort by multiply each element by 2
+map_2 = list(map(lambda x: x * 2, lst_to_sort ))
+print(map_2)
+# 23*. Raise each list number to the corresponding number on another list:
 list_A = [2, 3, 4]
 list_B = [5, 6, 7]
-24. Use filter and lambda to filter the number of a lst_to_sort with elem % 2 == 1.
-25. Considering the range of values: b = range(-10, 10), use the function filter to return only negative numbers.
-26*. Using the filter function, find the values that are common to the two lists:
+raised_list = list(map(lambda x,y: x ** y, list_A, list_B))
+print(raised_list)
+# 24. Use reduce and lambda to compute the numbers of a lst_to_sort.
+import functools
+lst_to_reduce = functools.reduce(lambda x,y: x+y, lst_to_sort)
+print(lst_to_reduce)
+# 25. Use filter and lambda to filter the number of a lst_to_sort with elem % 2 == 1.
+filter_list = list(filter(lambda x: (x % 2 == 1), lst_to_sort))
+print(filter_list)
+# 26. Considering the range of values: b = range(-10, 10), use the function filter to return only negative numbers.
+b = range(-10, 10)
+filter_range = list(filter(lambda b: b < 0, b))
+print(filter_range)
+# 27*. Using the filter function, find the values that are common to the two lists:
 list_1 = [1,2,3,5,7,9]
 list_2 = [2,3,5,6,7,8]
+lst_to_filter_same = list(filter(lambda x: x in list_1, list_2))
+print(lst_to_filter_same)
