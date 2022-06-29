@@ -7,7 +7,7 @@ class Vehicle:
         self.max_speed = max_speed
         self.total_capacity = total_capacity
     def fare(self):
-        return total_capacity * 100
+        return self.total_capacity * 100
 
 # 2 Create classes Bus and Car that inherit Vehicle.
 class Bus(Vehicle):
@@ -16,6 +16,7 @@ class Bus(Vehicle):
 class Car(Vehicle):
     def __init__(self, name, max_speed, total_capacity):
         super().__init__(name,max_speed, total_capacity)
+
 # 3 Create 3 car objects and 2 bus objects
 Folkswagen = Car('Folkswagen', 220, 8)
 Mercedes = Car('Mercedes', 210, 6)
@@ -35,6 +36,7 @@ class Bus(Vehicle):
         super().__init__(name,max_speed, total_capacity)
     def fare(self):
         return total_capacity * 100 * 1.1
+
 # 6 Add used_capacity attribute for Bus. It means how many people are on the bus.
 # If used_capacity > total_capacity raise an error.
 class Bus(Vehicle):
@@ -42,11 +44,13 @@ class Bus(Vehicle):
         super().__init__(name,max_speed, total_capacity)
         self.used_capacity = used_capacity
         if used_capacity > total_capacity :
-            return "Error"
+            raise "Error"
     def fare(self):
         return total_capacity * 100 * 1.1
 # 7 Write a magic method to Bus that would be triggered when len() function is called.
 # To figure out what magic method you should implement
+    def __len__(self):
+        return len(self.name)
 # 8 and 9 and 10 Create class Engine with attribute volume and method get_volume() that will return volume.9 Inherit Engine by Car class. 10 Check what is inheritance order of the Car class
 class Engine(Car):
     def __init__(self, name, max_speed, total_capacity, volume):
@@ -55,5 +59,4 @@ class Engine(Car):
     def get_volume(self):
         return self.volume
 print(f"Engine is inherit of Car - {issubclass(Engine, Car)}")
-
-
+#
