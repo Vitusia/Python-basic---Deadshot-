@@ -64,3 +64,4 @@ print(f'Pawn 1 is successfully moved from {f_dict2.get("FCOORDINATE")} to {f_dic
 
 # перевірка, чи дійсно метод присвоює нову координату
 print(f'The pawn has been moved to {pawn_1.coordinate}')
+
