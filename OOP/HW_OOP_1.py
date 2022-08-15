@@ -11,24 +11,24 @@ class Vehicle:
 
 # 2 Create classes Bus and Car that inherit Vehicle.
 class Bus(Vehicle):
-    def __init__(self, name, max_speed, total_capacity):
-        super().__init__(name,max_speed, total_capacity)
+    def __int__(self, name, max_speed, total_capacity):
+        super().__int__(name,max_speed, total_capacity)
 class Car(Vehicle):
-    def __init__(self, name, max_speed, total_capacity):
-        super().__init__(name,max_speed, total_capacity)
+    def __int__(self, name, max_speed, total_capacity):
+        super().__int__(name,max_speed, total_capacity)
 
 # 3 Create 3 car objects and 2 bus objects
-Folkswagen = Car('Folkswagen', 220, 8)
-Mercedes = Car('Mercedes', 210, 6)
-Volvo = Car('Volvo', 190,5)
-Bohdan = Bus('Bohdan', 90, 44)
-Ruta = Bus('Ruta', 120, 97)
+folkswagen = Car('Folkswagen', 220, 8)
+mercedes = Car('Mercedes', 210, 6)
+volvo = Car('Volvo', 190,5)
+bohdan = Bus('Bohdan', 90, 44)
+ruta = Bus('Ruta', 120, 97)
 # 4 check: if car_1 is instance of Car.  if car_2 is instance of Vehicle.
 # if bus_1 is instance of Car. if bus_1 is instance of Vehicle.
-print(f'Folkswagen is instance of Car - {isinstance(Folkswagen, Car)}')
-print(f'Mercedes is instance of Vehicle - {isinstance(Mercedes, Vehicle)}' )
-print(f'Bohdan is instance of Car - {isinstance(Bohdan, Car)}')
-print(f'Bohdan is instance of Vehicle - {isinstance(Bohdan, Vehicle)}')
+print(f'Folkswagen is instance of Car - {isinstance(folkswagen, Car)}')
+print(f'Mercedes is instance of Vehicle - {isinstance(mercedes, Vehicle)}' )
+print(f'Bohdan is instance of Car - {isinstance(bohdan, Car)}')
+print(f'Bohdan is instance of Vehicle - {isinstance(bohdan, Vehicle)}')
 # 5 Override fare method for Bus class. Here we need to add an extra 10% to the fare.
 # Formula: total_fare + 10% of total_fare. Example, fare = 50 => total_fare = 5500
 class Bus(Vehicle):
@@ -52,11 +52,16 @@ class Bus(Vehicle):
     def __len__(self):
         return len(self.name)
 # 8 and 9 and 10 Create class Engine with attribute volume and method get_volume() that will return volume.9 Inherit Engine by Car class. 10 Check what is inheritance order of the Car class
-class Engine(Car):
-    def __init__(self, name, max_speed, total_capacity, volume):
-        super().__init__(name, max_speed, total_capacity)
+class Engine:
+    def __init__(self, volume):
         self.volume = volume
+
     def get_volume(self):
         return self.volume
-print(f"Engine is inherit of Car - {issubclass(Engine, Car)}")
 
+class Car(Vehicle, Engine):
+    def __int__(self, name, max_speed, total_capacity):
+        super().__int__(name, max_speed, total_capacity)
+
+
+print(Car.mro())
