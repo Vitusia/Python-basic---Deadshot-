@@ -1,11 +1,11 @@
 # Implement abstract class Figure with abc method check_cell
-
 from abc import ABC , abstractmethod
 class Figure(ABC):
     def __init__(self, name, coordinate, team):
         self.name = name
         self.coordinate = coordinate
         self.team = team
+
     @abstractmethod
     def check_cell(self):
         pass
@@ -62,6 +62,9 @@ print(horse1.display_name)
 horse1.check_cell = f_dict2.get("FCOORDINATE")
 print(f'Horse 1 is successfully moved from {f_dict1.get("FCOORDINATE")} to {f_dict2.get("FCOORDINATE")}' )
 # Horse 1 is successfully moved from (2, 2) to (8, 0)
+horse2 = Horse('Horse 2', (4, 4), 'black')
+print(horse2.display_name)
+horse2.check_cell((8,8))
 
 pawn_1 = Pawn.create_from_dict(f_dict2)
 print(pawn_1.display_name)
