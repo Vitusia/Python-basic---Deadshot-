@@ -1,63 +1,78 @@
 # 1. Implement class iterator for Fibonacci numbers https://en.wikipedia.org/wiki/Fibonacci_number
 # Iterator get numbers of first Fibonacci numbers
 # Example:
-class fibonacci:
-    def __init__(self, max = 60):
-        self.a ,  self.b = 0, 1
-        self.max = max
+class Fibonacci:
+    def __init__(self, quantity):
+        self.quantity = quantity
+        self.start_num = 0
+        self.next_num = 1
+
     def __iter__(self):
         return self
+
     def __next__(self):
-        if self.a > self.max:
+        if self.quantity == 0:
             raise StopIteration
-        value_to_be_returned = self.a
-        self.a, self.b = self.b, self.a + self.b
-        return value_to_be_returned
+        self.quantity -= 1
+        next_num = self.start_num + self.next_num
+        self.start_num = self.next_num
+        self.next_num = next_num
 
-if __name__ == '__main__':
-    MY_FIBONACCI_NUMBERS = fibonacci()
-    for i in MY_FIBONACCI_NUMBERS:
-        print(i)
+        return self.start_num
 
+number_12 = Fibonacci(12)
+
+for i in number_12:
+    print(i)
+# 1
+# 1
+# 2
+# 3
+# 5
+# 8
+# 13
+# 21
+# 34
+# 55
+# 89
+# 144
 #
 # # 2. Implement generator for Fibonacci numbers
-def fibonacci(max):
+def fibonacci(num_2):
     a, b = 0, 1
-    while a < max:
-        yield a
-        a, b = b, a+b
-
-if __name__ == '__main__':
-    # Create a generator of fibonacci numbers smaller than 60
-    FibonacciNumbers = fibonacci(60)
-    # print out all the sequence
-    for i in FibonacciNumbers:
-        print(i)
-# 3. Write generator expression that returns square numbers of integers from 0 to 10
-def create_Gen_Square():
-    my_list_gen =  range(11)
-    for i in my_list_gen:
-        yield i*i
-mygenerator = create_Gen_Square()
-for i in mygenerator:
-    print(i)
-# 4.Implement coroutine for accumulation arithmetic mean
-# Example:
-# def accumulation_mean():
-#     # TODO implement
-#     pass
-#
-# >>> acc_mean = accumulation_mean()
-# >>> acc_mean.next()
-# >>> acc_mean.send(2)
+    for c in range(num_2):
+        yield  a
+        a, b = b, a + b
+for d in fibonacci(9):
+    print(d)
+# 1
+# 1
 # 2
-# >>> acc_mean.send(8)
+# 3
 # 5
-# >>> acc_mean.send(2)
-# 4
-# >>> acc_mean.send(4)
-# # 4
+# 8
+# 13
+# 21
 
+# 3. Write generator expression that returns square numbers of integers from 0 to 10
+def square_integers(lenght):
+    for a in range(lenght):
+        yield a ** 2
+for d in square_integers(11):
+    print(d)
+
+# 0
+# 1
+# 4
+# 9
+# 16
+# 25
+# 36
+# 49
+# 64
+# 81
+# 100
+# 4.Implement coroutine for accumulation arithmetic mean
 def accumulation_mean():
     # TODO implement
     total = 0.0
