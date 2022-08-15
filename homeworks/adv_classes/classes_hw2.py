@@ -42,9 +42,9 @@ horse1.check_cell = f_dict2.get("FCOORDINATE")
 print(f'Horse 1 is successfully moved from {f_dict1.get("FCOORDINATE")} to {f_dict2.get("FCOORDINATE")}' )
 # Horse 1 is successfully moved from (2, 2) to (8, 0)
 
-# перевірка, чи дійсно метод присвоює нову координату
-print(f'The horse has been moved to {horse1.coordinate}')
-
+# Перевірка, чи фігура отримала нову координату(походила)
+if horse1.coordinate != horse1.display_name:
+    print('The horse has been moved to {horse1.coordinate}')
 
 class Pawn(Figure):
 
@@ -62,7 +62,8 @@ pawn_1.check_cell = f_dict1.get("FCOORDINATE")
 print(f'Pawn 1 is successfully moved from {f_dict2.get("FCOORDINATE")} to {f_dict1.get("FCOORDINATE")}' )
 # Pawn 1 is successfully moved from (8, 0) to (2, 2)
 
-# перевірка, чи дійсно метод присвоює нову координату
-print(f'The pawn has been moved to {pawn_1.coordinate}')
+# перевірка, чи фігура отримала нову координату(походила)
 
+if pawn_1.coordinate != pawn_1.display_name:
+    print(f'The pawn has been moved to {pawn_1.coordinate}')
 
