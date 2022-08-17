@@ -15,7 +15,6 @@ import datetime as dt
 import csv
 import json
 
-
 class new_contex_manager:
 
     def __init__(self, filename, mode):
