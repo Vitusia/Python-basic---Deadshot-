@@ -37,8 +37,7 @@ with new_contex_manager('logs.txt', 'w') as file_object1:
     file_object1.write('')
 
 
-#  2022-07-19 16:34:45.531591 HT.txt OPEN
-#  2022-07-19 16:34:45.531761 HT.txt CLOSE
+
 
 #  TASK 2
 # Написати ф-цію яка переводить файл logs.txt в logs.csv
@@ -59,8 +58,6 @@ convert()
 with open('logs.csv', 'r') as h:
     print(h.read())
 
-#  2022-07-19,16:39:19.191468,HT.txt,OPEN
-#  2022-07-19,16:39:19.191653,HT.txt,CLOSE
 # TASK 3 (з зірочкою)
 # Написати ф-цію, яка обраховує з файла logs.csv скільки раз був відкритий файл і його остання дата відкриття.
 # Цю інформацію записати в logs.json. Приклад:
@@ -72,7 +69,6 @@ with open('logs.csv', 'r') as h:
 # }
 
 csv_file_new = 'logs.csv'
-
 
 def json_count(csv_file_new):
 
