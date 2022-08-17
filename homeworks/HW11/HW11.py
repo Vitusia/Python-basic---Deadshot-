@@ -10,7 +10,6 @@
 # В файл буде записано
 # 2022-07-11 22:17:59.782551 file.txt OPEN
 # 2022-07-11 22:18:00.782551 file.txt CLOSE
-
 import datetime as dt
 import csv
 import json
