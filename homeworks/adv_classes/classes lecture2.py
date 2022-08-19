@@ -1,14 +1,19 @@
 ## 1.Make the class with composition.
 class Laptop:
-    def __init__(self, model, color, capacity):
+    def __init__(self, model, color, battery_capacity):
         self.model = model
         self.color = color
-        self.capacity = capacity
+        self.battery = Battery(battery_capacity)
+    def __str__(self):
+        return f' Laptop {self.model} \n {self.battery}'
 class Battery:
     def __init__(self, capacity):
         self.capacity = capacity
+    def __str__(self):
+        return f'Battery capasity - {self.capacity}'
+
 asus = Laptop('Aspire 2000', 'Black', '25 000')
-pass
+print(asus)
 # 2.
 class Guitar:
     def __init__(self, string):
@@ -109,9 +114,13 @@ class AddressBook(AddressBookDataClass):
     def __init__(self, key, name, phone_number, address, email, birthday, age):
         super().__init__()
 
-addressbook_2 = AddressBook('7', 'Vita','+380767234754', 'Kyiv, Ukraine', 'Vita@gmail.com', '10.02.2002', 20)
+    def __str__(self):
+        return f'Key: {self.key} \nName: {self.name} \nPhone: {self.phone_number} \nAddress: {self.address} ' \
+               f'\nMail: {self.email} \nBirtday: {self.birthday} \nAge: {self.age}'
 
-print(str(addressbook_2))
+
+addressbook_2 = AddressBook('7', 'Vita','+380767234754', 'Kyiv, Ukraine', 'Vita@gmail.com', '10.02.2002', 20)
+print(addressbook_2)
 # 9.#     Change the value of the age property of the person object
 class Person:
 
