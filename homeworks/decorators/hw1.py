@@ -1,5 +1,5 @@
 """"""
-""" Task 1 
+"""  Task 1 
 написати декоратор exception_wrapper - його задача подавити всі ексепшини які можуть згенеруватись в функції, і видати якийсь прінт
 @exception_wrapper
 def some_func(*args, **kwargs):
