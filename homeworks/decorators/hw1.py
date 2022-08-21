@@ -31,7 +31,12 @@ def exception_wrapper(func):
             return 'Too large to display'
         except Exception:
             return 'Error'
-
+        except RecursionError:
+            return 'Maximum recursion depth exceeded in comparison'
+        except AssertionError:
+            return'Assertion Error'
+        except KeyError:
+            return 'There is an issue with your key. Please, check and use another.'
 
 
     return my_func
