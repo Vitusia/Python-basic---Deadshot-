@@ -27,6 +27,12 @@ def exception_wrapper(func):
             return 'You do not have access'
         except TypeError:
             return "Function is applied to an object of inappropriate type"
+        except OverflowError:
+            return 'Too large to display'
+        except Exception:
+            return 'Error'
+
+
 
     return my_func
 
