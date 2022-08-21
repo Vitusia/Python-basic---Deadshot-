@@ -10,6 +10,10 @@ class Figure(ABC):
     def check_cell(self):
         pass
 
+    def move(self, new_coordinate):
+        self.coordinate = new_coordinate
+        print(f'{self.name} ({self.team}) - move on {self.coordinate}')
+
     def can_not_move(self, new_coordinate):
         print(f"{self.name} ({self.team}) - can't move on {new_coordinate}")
 
@@ -50,7 +54,7 @@ class Pawn(Figure):
 horse1 = Horse('Horse 1', (1, 2), 'white')
 print(horse1.display_name)
 # Horse 1 (white) - (1, 2)
-horse1.check_cell((3, 4))
+horse1.check_cell((3, 3))
 # Horse 1 (white) - can't move on (3, 4)
 
 
