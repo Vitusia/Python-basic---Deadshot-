@@ -17,26 +17,26 @@ def exception_wrapper(func):
     def my_func(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except StopIteration:
-            return "Iteration is done"
-        except ZeroDivisionError:
-            return'Can not be divided by zero'
-        except IndexError:
-            return 'list index out of range'
-        except PermissionError:
-            return 'You do not have access'
-        except TypeError:
-            return "Function is applied to an object of inappropriate type"
-        except OverflowError:
-            return 'Too large to display'
-        except Exception:
-            return 'Error'
-        except RecursionError:
-            return 'Maximum recursion depth exceeded in comparison'
-        except AssertionError:
-            return'Assertion Error'
-        except KeyError:
-            return 'There is an issue with your key. Please, check and use another.'
+        # except StopIteration:
+        #     return "Iteration is done"
+        # except ZeroDivisionError:
+        #     return'Can not be divided by zero'
+        # except IndexError:
+        #     return 'list index out of range'
+        # except PermissionError:
+        #     return 'You do not have access'
+        # except TypeError:
+        #     return "Function is applied to an object of inappropriate type"
+        # except OverflowError:
+        #     return 'Too large to display'
+        # except RecursionError:
+        #     return 'Maximum recursion depth exceeded in comparison'
+        # except AssertionError:
+        #     return'Assertion Error'
+        # except KeyError:
+        #     return 'There is an issue with your key. Please, check and use another.'
+        except Exception as e :
+            return f'{e }Exception Encountered'
 
 
     return my_func
