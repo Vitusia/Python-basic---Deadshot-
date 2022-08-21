@@ -21,7 +21,6 @@ class Figure(ABC):
     def create_from_dict(cls, data_dict):
         return cls(name=data_dict.get('FNAME'), coordinate=data_dict.get('FCOORDINATE'), team=data_dict.get('FTEAM'))
 
-
 class Horse(Figure):
     def check_cell(self, new_coordinate: tuple):
         if self.team == 'white':
@@ -74,7 +73,3 @@ print(pawn_2.display_name)
 # Pawn 2 (white) - (3, 4)
 pawn_2.check_cell((7,8))
 # Pawn 2 (white) - can't move on (7, 8)
-
-
-
-
