@@ -18,18 +18,10 @@ class Figure(ABC):
         return f'{self.name} ({self.team}) - {self.coordinate}'
 
     @classmethod
-    def create_from_dict(cls, f_dict1: dict):
-         return cls(name = f_dict1.get('FNAME'), coordinate=f_dict1.get('FCOORDINATE'), team = f_dict1.get('FTEAM'))
-f_dict1 = {
-    "FNAME": "Horse 1",
-    "FCOORDINATE": (2, 2),
-    "FTEAM": "black"
-}
-f_dict2 = {
-    "FNAME": "Pawn 1",
-    "FCOORDINATE": (8, 0),
-    "FTEAM": "white"
-}
+    def create_from_dict(cls, data_dict):
+        return cls(name=data_dict.get('FNAME'), coordinate=data_dict.get('FCOORDINATE'), team=data_dict.get('FTEAM'))
+
+
 class Horse(Figure):
     def check_cell(self, new_coordinate: tuple):
         if self.team == 'white':
@@ -56,26 +48,33 @@ class Pawn(Figure):
         else:
             self.can_not_move(new_coordinate)
 
-horse1 = Horse.create_from_dict(f_dict1)
+horse1 = Horse('Horse 1', (1, 2), 'white')
 print(horse1.display_name)
-# Horse 1 (black) - (2, 2)
-horse1.check_cell = f_dict2.get("FCOORDINATE")
-print(horse1.check_cell)
-print(f'Horse 1 is successfully moved from {f_dict1.get("FCOORDINATE")} to {f_dict2.get("FCOORDINATE")}' )
-# Horse 1 is successfully moved from (2, 2) to (8, 0)
-horse2 = Horse('Horse 2', (4, 4), 'black')
-print(horse2.display_name)
-horse2.check_cell((8,8))
+# Horse 1 (white) - (1, 2)
+horse1.check_cell((3, 3))
+# Horse 1 (white) - can't move on (3, 3)
 
-pawn_1 = Pawn.create_from_dict(f_dict2)
+
+horse2 = Horse('Horse 2', (7, 5), 'black')
+# Horse 2 (black) - (7, 5)
+print(horse2.display_name)
+horse2.check_cell((7,7))
+# Horse 2 (black) - can't move on (7, 7)
+
+
+pawn_1 = Pawn('Pawn 1', (6, 6), 'white')
 print(pawn_1.display_name)
-# Pawn 1 (white) - (8, 0)
-pawn_1.check_cell = f_dict1.get("FCOORDINATE")
-print(f'Pawn 1 is successfully moved from {f_dict2.get("FCOORDINATE")} to {f_dict1.get("FCOORDINATE")}' )
-# Pawn 1 is successfully moved from (8, 0) to (2, 2)
+# Pawn 1 (white) - (6, 6)
+pawn_1.check_cell((4,6))
+# Pawn 1 (white) - can't move on (4, 6)
+
+
 pawn_2 = Pawn('Pawn 2', (3, 4), 'white')
 print(pawn_2.display_name)
+# Pawn 2 (white) - (3, 4)
 pawn_2.check_cell((7,8))
+# Pawn 2 (white) - can't move on (7, 8)
+
 
 
 
