@@ -29,26 +29,26 @@ def exception_wrapper(func):
         #     return "Function is applied to an object of inappropriate type"
         # except OverflowError:
         #     return 'Too large to display'
-        # except RecursionError:
-        #     return 'Maximum recursion depth exceeded in comparison'
-        # except AssertionError:
-        #     return'Assertion Error'
-        # except KeyError:
-        #     return 'There is an issue with your key. Please, check and use another.'
+        except RecursionError:
+            return 'Maximum recursion depth exceeded in comparison'
+        except AssertionError:
+            return'Assertion Error'
+        except KeyError:
+            return 'There is an issue with your key. Please, check and use another.'
         except Exception as e :
             return f'{e }Exception Encountered'
 
 
     return my_func
 
-Exception_list = [StopIteration, ZeroDivisionError, TypeError]
+Exception_list = [Exception, KeyError, AssertionError, RecursionError ]
 
 @exception_wrapper
 def rand_exc_func():
-    raise Exception_list[randint(0,8)]
+    raise Exception_list[randint(0,6)]
     return 'Here is your exception'
 
-for i in range (5):
+for i in range (4):
     print(rand_exc_func())
 
 """ Task 2
